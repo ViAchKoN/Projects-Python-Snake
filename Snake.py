@@ -33,10 +33,10 @@ FOOD_SIZE = 10
 pygame.init()                                               # Initialize pygame
 clock = pygame.time.Clock()                                 # Initialize clock
 
-display = pygame.display.set_mode((WIDTH, HEIGHT))           # Initialize a window for display
-pygame.display.set_caption('Snake')                          # Setting screen caption name
+display = pygame.display.set_mode((WIDTH, HEIGHT))          # Initialize a window for display
+pygame.display.set_caption('Snake')                         # Setting screen caption name
 
-font_style = pygame.font.SysFont('comicsansms', 25)          # Setting game font size
+font_style = pygame.font.SysFont('comicsansms', 25)         # Setting game font size
 
 
 # Class Snake
