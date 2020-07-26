@@ -30,11 +30,11 @@ HEIGHT = 600
 SNAKE_SIZE = 10
 FOOD_SIZE = 10
 
-pygame.init()                                       # Initialize pygame
-clock = pygame.time.Clock()                         # Initialize clock
+pygame.init()                                               # Initialize pygame
+clock = pygame.time.Clock()                                 # Initialize clock
 
-display = pygame.display.set_mode((WIDTH, HEIGHT))  # Initialize a window for display
-pygame.display.set_caption('Snake')                 # Setting screen caption name
+display = pygame.display.set_mode((WIDTH, HEIGHT))           # Initialize a window for display
+pygame.display.set_caption('Snake')                          # Setting screen caption name
 
 font_style = pygame.font.SysFont('comicsansms', 25)          # Setting game font size
 
@@ -143,7 +143,7 @@ def game():
             pygame.display.update()
 
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:                       # Close the app when a user closes the window
+                if event.type == pygame.QUIT:                   # Close the app when a user closes the window
                     running = False
                     round_end = False
 
