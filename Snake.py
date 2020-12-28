@@ -40,21 +40,20 @@ font_style = pygame.font.SysFont('comicsansms', 25)         # Setting game font 
 
 
 # Class Snake
-class Snake():
-
-    def __init__(self: object):
+class Snake:
+    def __init__(self):
         self.size = SNAKE_SIZE
         self.length = 1
         self.body = [[SNAKE_START_X, SNAKE_START_Y]]
         self.color = COLORS['ORANGE']
 
-    def grow(self: object, body_part: list) -> None:
+    def grow(self, body_part: list) -> None:
         self.body.append(body_part)
 
-    def incr_length(self: object) -> None:
+    def incr_length(self) -> None:
         self.length += 1
 
-    def move(self: object, x_move: int, y_move: int) -> None:
+    def move(self, x_move: int, y_move: int) -> None:
         x, y = self.get_head()[0] + x_move, self.get_head()[1] + y_move
         if x <= 0:
             x = WIDTH
@@ -68,15 +67,15 @@ class Snake():
         if len(self.body) > self.length:
             del self.body[0]
 
-    def get_head(self: object) -> list:
+    def get_head(self) -> list:
         return(self.body[-1])
 
-    def check_collision(self: object) -> bool:
+    def check_collision(self) -> bool:
         for part in self.body[:-1]:
             if self.get_head() == part:
                 return True
 
-    def check_back(self: object, x_move: int, y_move: int) -> bool:
+    def check_back(self, x_move: int, y_move: int) -> bool:
         if self.length > 2:
             x, y = self.get_head()[0] + x_move, self.get_head()[1] + y_move
             if [x, y] != self.body[-2]:
@@ -94,22 +93,21 @@ class Snake():
 
 
 # Class food
-class Food():
-
+class Food:
     def __init__(self):
         self.x = round(random.randrange(0, WIDTH - SNAKE_SIZE)/10.0)*10.0
         self.y = round(random.randrange(0, HEIGHT - SNAKE_SIZE)/10.0)*10.0
         self.size = FOOD_SIZE
         self.color = COLORS['GREEN']
 
-    def get_loc(self: object) -> tuple:
+    def get_loc(self) -> tuple:
         return ((self.x, self.y))
 
-    def update_loc(self: object) -> None:
+    def update_loc(self) -> None:
         self.x = round(random.randrange(0, WIDTH - SNAKE_SIZE) / 10.0) * 10.0
         self.y = round(random.randrange(0, HEIGHT - SNAKE_SIZE) / 10.0) * 10.0
 
-    def draw(self: object) -> None:
+    def draw(self) -> None:
         pygame.draw.rect(display, self.color, [self.get_loc()[0], self.get_loc()[1], self.size, self.size])
 
 
