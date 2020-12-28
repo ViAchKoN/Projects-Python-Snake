@@ -83,7 +83,7 @@ class Snake:
         else:
             return True
 
-    def draw(self: object) -> None:
+    def draw(self) -> None:
         for i in range(0, self.length):
             if i % 2 == 0 or i == 0:
                 color = COLORS['ORANGE']
