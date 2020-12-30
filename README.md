@@ -1,6 +1,6 @@
 # Python-Snake
 
-Simple 'Snake' game.
+'Snake' game.
 
 **Controls**:
   * UP - move up
