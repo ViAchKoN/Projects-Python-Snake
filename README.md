@@ -1,6 +1,6 @@
-# Python-Snake
+# Snake(python)
 
-'Snake' game.
+Snake game.
 
 **Controls**:
   * UP - move up
