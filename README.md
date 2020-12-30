@@ -1,4 +1,4 @@
-# Snake(python)
+# Snake (python)
 
 Snake game.
 
