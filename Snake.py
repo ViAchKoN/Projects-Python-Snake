@@ -41,6 +41,9 @@ font_style = pygame.font.SysFont('comicsansms', 25)         # Setting game font 
 
 # Class Snake
 class Snake:
+    '''
+    Class which defines snake
+    '''
     def __init__(self):
         self.size = SNAKE_SIZE
         self.length = 1
@@ -48,12 +51,27 @@ class Snake:
         self.color = COLORS['ORANGE']
 
     def grow(self, body_part: list) -> None:
+        '''
+        Move snake to a new position
+        :param body_part: Cooridinates of the snake body parts
+        :return:
+        '''
         self.body.append(body_part)
 
     def incr_length(self) -> None:
+        '''
+        Increase snake length by one cube
+        :return:
+        '''
         self.length += 1
 
     def move(self, x_move: int, y_move: int) -> None:
+        '''
+        Set a new direction snake to move
+        :param x_move: Coordinates where to move on x-axis
+        :param y_move: Coordinates where to move on y-axis
+        :return:
+        '''
         x, y = self.get_head()[0] + x_move, self.get_head()[1] + y_move
         if x <= 0:
             x = WIDTH
@@ -68,14 +86,28 @@ class Snake:
             del self.body[0]
 
     def get_head(self) -> list:
-        return(self.body[-1])
+        '''
+        Get the coordinates of snake head
+        :return:
+        '''
+        return self.body[-1]
 
     def check_collision(self) -> bool:
+        '''
+        Check of snake head hit the body
+        :return:
+        '''
         for part in self.body[:-1]:
             if self.get_head() == part:
                 return True
 
     def check_back(self, x_move: int, y_move: int) -> bool:
+        '''
+        Check if a new direction means that snake moves back
+        :param x_move: Coordinates where to move on x-axis
+        :param y_move: Coordinates where to move on y-axis
+        :return: True/False
+        '''
         if self.length > 2:
             x, y = self.get_head()[0] + x_move, self.get_head()[1] + y_move
             if [x, y] != self.body[-2]:
@@ -84,6 +116,10 @@ class Snake:
             return True
 
     def draw(self) -> None:
+        '''
+        Draw snake on the screen
+        :return:
+        '''
         for i in range(0, self.length):
             if i % 2 == 0 or i == 0:
                 color = COLORS['ORANGE']
@@ -92,8 +128,10 @@ class Snake:
             pygame.draw.rect(display, color, [self.body[i][0], self.body[i][1], self.size, self.size])
 
 
-# Class food
 class Food:
+    '''
+    Class which defines food
+    '''
     def __init__(self):
         self.x = round(random.randrange(0, WIDTH - SNAKE_SIZE)/10.0)*10.0
         self.y = round(random.randrange(0, HEIGHT - SNAKE_SIZE)/10.0)*10.0
@@ -101,27 +139,54 @@ class Food:
         self.color = COLORS['GREEN']
 
     def get_loc(self) -> tuple:
-        return ((self.x, self.y))
+        '''
+        Get coordinates of food
+        :return: Coordinates of food
+        '''
+        return self.x, self.y
 
     def update_loc(self) -> None:
+        '''
+        Update coordinates of food
+        :return:
+        '''
         self.x = round(random.randrange(0, WIDTH - SNAKE_SIZE) / 10.0) * 10.0
         self.y = round(random.randrange(0, HEIGHT - SNAKE_SIZE) / 10.0) * 10.0
 
     def draw(self) -> None:
+        '''
+        Draw food on the screen
+        :return:
+        '''
         pygame.draw.rect(display, self.color, [self.get_loc()[0], self.get_loc()[1], self.size, self.size])
 
 
 def print_score(score: int) -> None:
+    '''
+    Display score on the screen
+    :param score: Score
+    :return:
+    '''
     value = font_style.render("Score: " + str(score), True, COLORS['BLUE'])
     display.blit(value, [0, 0])
 
 
 def print_message(text: str, color: tuple) -> None:
+    '''
+    Display message on the screen
+    :param text: Text to display
+    :param color: Color of text
+    :return:
+    '''
     msg = font_style.render(text, True, color)
     display.blit(msg, [WIDTH/2-150, HEIGHT/2])
 
 
-def game():
+def run() -> None:
+    '''
+    Game procedure
+    :return:
+    '''
     x1_move = 0
     y1_move = 0
 
@@ -150,7 +215,7 @@ def game():
                         running = False
                         round_end = False
                     if event.key == pygame.K_c:
-                        game()
+                        run()
 
         for event in pygame.event.get():                        # Processing events
             if event.type == pygame.QUIT:                       # Close the app when a user closes the window
@@ -198,6 +263,5 @@ def game():
     quit()
 
 
-# MAIN PROCEDRURE
 if __name__ == "__main__":
-    game()
+    run()
