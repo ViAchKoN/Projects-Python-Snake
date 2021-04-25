@@ -1,7 +1,0 @@
-{
-    "python.linting.pylintArgs": [
-    "--extension-pkg-whitelist=pygame"
-    ],
-    "python.linting.flake8Args": [
-        "--max-line-length=120"]
-}
