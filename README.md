@@ -1,5 +1,6 @@
-# Snake (python)
-
+# Snake (Pygame)
+_____________________________
+## Description
 Snake game.
 
 **Controls**:
