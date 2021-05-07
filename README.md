@@ -1,4 +1,4 @@
-# Snake (Pygame)
+# Snake (PyGame)
 _____________________________
 ## Description
 Snake game.
